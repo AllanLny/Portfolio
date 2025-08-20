@@ -6,14 +6,14 @@ on:
     types:
       - completed
     branches:
-      - main
+      - master
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths-ignore:
       - '**.md'
       - '.github/workflows/verify-linter.yaml'
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
     types: [opened, synchronize]
     paths-ignore:
       - '**.md'
