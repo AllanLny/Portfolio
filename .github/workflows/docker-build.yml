@@ -7,16 +7,6 @@ on:
       - completed
     branches:
       - master
-  push:
-    branches: [ master ]
-    paths-ignore:
-      - '**.md'
-      - '.github/workflows/verify-linter.yaml'
-  pull_request:
-    branches: [ master ]
-    types: [opened, synchronize]
-    paths-ignore:
-      - '**.md'
 
 jobs:
   build-and-push:
