@@ -1,8 +1,20 @@
 # Dépendances
-/node_modules
+node_modules
+/.pnp
+.pnp.js
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # Tests
 /coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
 
 # Production
 /dist
@@ -10,13 +22,13 @@
 /dist-ssr
 *.local
 
-# Fichiers d'environnement (garder les templates .example uniquement)
+# Fichiers d'environnement
 .env
 .env.local
-.env.development
-.env.test
-.env.production
-# Sauf les exemples de configuration
+.env.development.local
+.env.test.local
+.env.production.local
+# Garder uniquement les exemples
 !.env.example
 
 # Logs
@@ -50,6 +62,7 @@ gcp-sa.json
 terraform.rc
 **/terraform/.terraform/
 crash.log
+.terraform
 
 # Build Docker
 docker-compose.override.yml
