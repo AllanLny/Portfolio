@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@tanstack/react-query": "^5.85.5",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "sass-embedded": "^1.90.0",
+    "vite-plugin-dts": "^4.5.4",
+    "vite-plugin-svgr": "^4.3.0"
+  }
+}
