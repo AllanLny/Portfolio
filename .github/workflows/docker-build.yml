@@ -72,7 +72,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Echo preview deployment info
-        run: |
-          echo "::notice::PR preview deployment would go here"
-          echo "::notice::PR #${{ github.event.number }} from ${{ github.event.pull_request.user.login }}"
+        - name: Echo preview deployment info
+          run: |
+            echo "::notice::PR preview deployment would go here"
+            # Pour workflow_run, ces valeurs ne sont pas disponibles directement
+            echo "::notice::Triggered by workflow: ${{ github.event.workflow_run.workflow_id }}"

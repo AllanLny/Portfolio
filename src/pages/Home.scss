@@ -1,6 +1,5 @@
 .home-container {
   max-width: 100%;
-  overflow-x: hidden;
   margin: 0 auto;
   margin-top: 120px;
 }
@@ -136,11 +135,8 @@
   }
   
   .scroll-down-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
@@ -149,6 +145,7 @@
     text-decoration: none;
     transition: all 0.3s ease;
     animation: bounce 2s infinite;
+    margin-bottom: 50px;
     
     span {
       font-size: 0.9rem;
@@ -186,8 +183,42 @@
 }
 
 /* Project showcase section */
-.projects-showcase {
+.projects-showcase  {
   padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+
+.section-recommendations {
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 400px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    
+    a {
+      color: var(--text-color);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        opacity: 1;
+        transform: translateY(-3px);
+        color: var(--primary-color);
+      }
+    }
+  }
+  .home-container {
+  margin-top: 200px;
+}
 }

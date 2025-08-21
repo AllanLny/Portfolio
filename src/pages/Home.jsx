@@ -101,9 +101,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className='recommendations'>
+      <section id="projects" className="section-recommendations">
           <Recommendations />
-        </div>
+      </section>
 
         <a href="#projects" className="scroll-down-indicator">
           <span>Voir mes projets</span>
@@ -112,8 +112,7 @@ export default function Home() {
           </svg>
         </a>
       </section>
-      
-      {/* Sélection de projets */}
+    
       <section id="projects" className="projects-showcase">
         <Projects />
       </section>
