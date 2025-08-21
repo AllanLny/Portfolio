@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Projects from '../components/Projects';
 import Recommendations from '../components/Recommendations';
 import './Home.scss';
