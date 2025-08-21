@@ -12,6 +12,7 @@ module.exports = {
       jsx: true
     }
   },
+  ignorePatterns: ['dist/**', 'build/**'],
   env: {
     browser: true,
     es2020: true,

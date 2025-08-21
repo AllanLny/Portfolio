@@ -1,16 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Projects from '../components/Projects';
 import Recommendations from '../components/Recommendations';
 import './Home.scss';
 
 export default function Home() {
-  // Utiliser le hook navigate de React Router
-  const navigate = useNavigate();
-  
   const [isVisible, setIsVisible] = useState(false);
   const heroRef = useRef(null);
-  const skillsRef = useRef(null);
   const [avatarSrc, setAvatarSrc] = useState('/img/avatar.png');
 
   // Animation d'entrée avec IntersectionObserver

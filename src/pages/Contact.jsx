@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
-import { useNavigate } from 'react-router-dom';
 import './Contact.scss';
 
 // récupérer les variables d'environnement (Vite expose import.meta.env.VITE_*)
@@ -9,8 +8,6 @@ const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export default function Contact() {
-  // Utiliser le hook navigate de React Router
-  const navigate = useNavigate();
 
   const form = useRef();
   const [formState, setFormState] = useState({
