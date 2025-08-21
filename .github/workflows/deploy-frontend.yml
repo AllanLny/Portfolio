@@ -37,11 +37,29 @@ jobs:
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
       
+      # Créer fichier de configuration vercel.json si nécessaire
+      - name: Ensure vercel.json exists
+        run: |
+          if [ ! -f "vercel.json" ]; then
+            echo '{
+              "version": 2,
+              "builds": [
+                { "src": "package.json", "use": "@vercel/static-build", "config": { "buildCommand": "npm run build", "outputDirectory": "dist" } }
+              ],
+              "routes": [
+                { "src": "/(.*)", "dest": "/index.html" }
+              ],
+              "github": {
+                "enabled": false
+              }
+            }' > vercel.json
+          fi
+      
       # Déploiement de prévisualisation pour les PRs
       - name: Deploy to Vercel Preview
         if: github.event_name == 'pull_request'
         run: |
-          vercel deploy --token ${{ secrets.VERCEL_TOKEN }} --yes --scope ${{ secrets.VERCEL_ORG_ID }} > vercel_output.txt
+          vercel deploy --token ${{ secrets.VERCEL_TOKEN }} --yes --scope ${{ secrets.VERCEL_ORG_ID }} --name portfolio-allan > vercel_output.txt
           PREVIEW_URL=$(cat vercel_output.txt)
           echo "PREVIEW_URL=$PREVIEW_URL" >> $GITHUB_ENV
           echo "::notice title=Preview Deployment::Your app is deployed at $PREVIEW_URL"
@@ -50,7 +68,7 @@ jobs:
       - name: Deploy to Vercel Production
         if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
         run: |
-          vercel deploy --prod --token ${{ secrets.VERCEL_TOKEN }} --yes --scope ${{ secrets.VERCEL_ORG_ID }} > vercel_output.txt
+          vercel deploy --prod --token ${{ secrets.VERCEL_TOKEN }} --yes --scope ${{ secrets.VERCEL_ORG_ID }} --name portfolio-allan > vercel_output.txt
           PRODUCTION_URL=$(cat vercel_output.txt)
           echo "PRODUCTION_URL=$PRODUCTION_URL" >> $GITHUB_ENV
           echo "::notice title=Production Deployment::Your app is deployed at $PRODUCTION_URL"
