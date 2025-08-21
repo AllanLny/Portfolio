@@ -1,11 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Projects from '../components/Projects';
 import Recommendations from '../components/Recommendations';
 import './Home.scss';
 
 export default function Home() {
+  // Utiliser le hook navigate de React Router
+  const navigate = useNavigate();
+  
   const [isVisible, setIsVisible] = useState(false);
   const heroRef = useRef(null);
+  const skillsRef = useRef(null);
   const [avatarSrc, setAvatarSrc] = useState('/img/avatar.png');
 
   // Animation d'entrée avec IntersectionObserver
@@ -96,9 +101,9 @@ export default function Home() {
           </div>
         </div>
 
-      <section id="projects" className="section-recommendations">
+        <section className='section-recommendations'>
           <Recommendations />
-      </section>
+        </section>
 
         <a href="#projects" className="scroll-down-indicator">
           <span>Voir mes projets</span>
@@ -107,7 +112,8 @@ export default function Home() {
           </svg>
         </a>
       </section>
-    
+      
+      {/* Sélection de projets */}
       <section id="projects" className="projects-showcase">
         <Projects />
       </section>

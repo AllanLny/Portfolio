@@ -56,4 +56,5 @@
 @media (max-width: 640px) {
   .navbar { width: calc(100% - 32px); height: 64px; bottom: 18px; }
   .nav-list { gap: 14px; }
+  .nav-list a { padding: 8px 12px; }
 }
