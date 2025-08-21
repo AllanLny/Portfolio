@@ -1,7 +1,8 @@
 module.exports = {
-  extends: ['eslint:recommended'],
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  parser: '@babel/eslint-parser',
   parserOptions: {
-    ecmaVersion: 'latest',
+    ecmaVersion: '2022',
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true
@@ -9,10 +10,13 @@ module.exports = {
   },
   env: {
     browser: true,
-    es2020: true
+    es2020: true,
+    node: true
   },
-  rules: {
-    semi: ['error', 'always'],
-    quotes: ['error', 'single']
+  plugins: ['react'],
+  settings: {
+    react: {
+      version: 'detect'
+    }
   }
 };

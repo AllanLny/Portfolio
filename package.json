@@ -7,7 +7,7 @@
     "dev": "vite --clearScreen false",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --config eslint.config.js"
+    "lint": "eslint . --ext .js,.jsx"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -17,13 +17,15 @@
     "react-router-dom": "^7.8.1"
   },
   "devDependencies": {
-    "eslint": "^8.57.0",
+    "@babel/eslint-parser": "^7.28.0",
     "@eslint/js": "^8.57.0",
-    "eslint-define-config": "^2.0.0",
     "@types/node": "^24.3.0",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
     "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-define-config": "^2.0.0",
+    "eslint-plugin-react": "^7.37.5",
     "globals": "^16.3.0",
     "sass": "^1.70.0",
     "sass-embedded": "^1.90.0",
