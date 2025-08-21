@@ -5,12 +5,8 @@ import Recommendations from '../components/Recommendations';
 import './Home.scss';
 
 export default function Home() {
-  // Utiliser le hook navigate de React Router
-  const navigate = useNavigate();
-  
   const [isVisible, setIsVisible] = useState(false);
   const heroRef = useRef(null);
-  const skillsRef = useRef(null);
   const [avatarSrc, setAvatarSrc] = useState('/img/avatar.png');
 
   // Animation d'entrée avec IntersectionObserver
@@ -57,7 +53,6 @@ export default function Home() {
   
   return (
     <main className="home-container">
-      {/* Section Hero épurée */}
       <section ref={heroRef} className={`minimal-hero ${isVisible ? 'visible' : ''}`}>
         <div className="hero-content">
           <div className="hero-avatar-container">
@@ -112,8 +107,7 @@ export default function Home() {
           </svg>
         </a>
       </section>
-      
-      {/* Sélection de projets */}
+    
       <section id="projects" className="projects-showcase">
         <Projects />
       </section>
