@@ -1,10 +1,14 @@
 import './About.scss';
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function About() {
   // Utiliser le hook navigate de React Router
   const navigate = useNavigate();
+  
+  // Fonction pour naviguer vers une autre page
+  const navigateTo = (path) => {
+    navigate(`/${path}`);
+  };
   
   return (
     <section className="about-section">
@@ -27,35 +31,64 @@ export default function About() {
           
           <div className="about-text">
             <p className="about-intro">
-              Passionné par les technologies modernes, je suis un <strong>ingénieur DevOps et développeur Full-Stack</strong> spécialisé dans les solutions cloud et l'automatisation.
+              Ingénieur DevOps & Développeur Full-Stack, je suis spécialisé dans <strong>l'orchestration cloud avec Google Cloud Platform</strong> et le développement d'applications web modernes. Autonome et curieux, je valorise le travail en équipe, l'entraide et les échanges techniques.
             </p>
             
             <div className="about-info">
-              <h3>Mon parcours</h3>
+              <h3>Mon expertise</h3>
               <p>
-                Après plusieurs années de formation intensive en développement web et DevOps, j'ai acquis une expertise dans la conception d'architectures cloud robustes et évolutives, particulièrement sur Google Cloud Platform. Je me spécialise dans l'implémentation de pipelines CI/CD, l'Infrastructure as Code (Terraform) et le développement d'applications web modernes avec React.
+                Je conçois et déploie des architectures Cloud complètes sur GCP avec Terraform, couvrant plusieurs environnements (dev/préprod/prod). Mon expérience inclut l'intégration de services comme Pub/Sub, Cloud Storage, Cloud Run Functions avec Python, BigQuery, IAM, et les systèmes de monitoring.
               </p>
               <p>
-                Ma philosophie est centrée sur l'optimisation des processus, l'automatisation et la création de solutions élégantes qui résolvent des problèmes concrets. J'accorde une importance particulière à la qualité du code, la sécurité et les bonnes pratiques de développement.
+                J'ai orchestré des pipelines serverless event-driven pour l'ingestion et la transformation de données, et développé des solutions SaaS multi-tenant avec React, SCSS, FastAPI et PostgreSQL. Ma philosophie est centrée sur l'optimisation des processus et la création de solutions élégantes qui résolvent des problèmes concrets.
               </p>
+              
+              <h3>Compétences techniques</h3>
+              <div className="skills-grid">
+                <div className="skill-category">
+                  <h4>Cloud & DevOps</h4>
+                  <ul>
+                    <li>Terraform (IaC)</li>
+                    <li>Google Cloud Platform</li>
+                    <li>CI/CD (GitHub Actions)</li>
+                    <li>Docker</li>
+                    <li>GitOps</li>
+                    <li>SonarQube</li>
+                  </ul>
+                </div>
+                <div className="skill-category">
+                  <h4>Développement</h4>
+                  <ul>
+                    <li>React, SCSS</li>
+                    <li>Python</li>
+                    <li>Java Spring Boot</li>
+                    <li>FastAPI</li>
+                    <li>Tests (Jest, JUnit, Cypress)</li>
+                  </ul>
+                </div>
+                <div className="skill-category">
+                  <h4>Bases de données</h4>
+                  <ul>
+                    <li>PostgreSQL</li>
+                    <li>MongoDB</li>
+                    <li>BigQuery</li>
+                  </ul>
+                </div>
+              </div>
               
               <h3>Mes valeurs</h3>
               <ul className="values-list">
                 <li>
-                  <span className="value-icon">🔄</span>
-                  <span className="value-text">Apprentissage continu et curiosité technique</span>
+                  <span className="value-text">Curiosité technologique et apprentissage continu</span>
                 </li>
                 <li>
-                  <span className="value-icon">🤝</span>
                   <span className="value-text">Collaboration et communication transparente</span>
                 </li>
                 <li>
-                  <span className="value-icon">🚀</span>
-                  <span className="value-text">Innovation et recherche de solutions optimales</span>
+                  <span className="value-text">Architecture modulaire et réutilisable</span>
                 </li>
                 <li>
-                  <span className="value-icon">⚙️</span>
-                  <span className="value-text">Automatisation et efficacité des processus</span>
+                  <span className="value-text">Mise en production sécurisée et contrôlée</span>
                 </li>
               </ul>
               
@@ -66,12 +99,13 @@ export default function About() {
                 >
                   Me contacter
                 </button>
-                <button 
-                  onClick={() => navigateTo('resume')}
+                <a 
+                  href="/files/Allan_Lannoy_CV_Ingénieur_DevOps_FullStack.pdf" 
+                  download="Allan_Lannoy_CV_Ingénieur_DevOps_FullStack.pdf"
                   className="cta-button secondary"
                 >
-                  Voir mon CV
-                </button>
+                  Télécharger mon CV
+                </a>
               </div>
             </div>
           </div>

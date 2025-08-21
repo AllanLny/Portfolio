@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./ProjectCard.scss";
+// Supprime l'import inutilisé de 'fs' qui peut causer des erreurs dans le navigateur
+// import { link } from "fs";
 
 export default function ProjectCard({ project }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -29,14 +31,23 @@ export default function ProjectCard({ project }) {
               ))
             ) : (
               <>
-                <li>React</li>
-                <li>Node.js</li>
-                <li>Docker</li>
-                <li>Kubernetes</li>
               </>
             )}
           </ul>
-          <button className="view-project">Voir le projet</button>
+          {project.link && project.link.length > 0 ? (
+            <a 
+              href={project.link} 
+              className="view-project"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Voir le projet
+            </a>
+          ) : (
+            <>
+            </>
+          )}
+          {project.inProgress && <span className="badge in-progress">En cours</span>}
         </div>
       </div>
     </div>

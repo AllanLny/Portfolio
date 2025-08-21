@@ -1,21 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Recommendations.scss';
-
-const recommendations = [
-  {
-    author: "Jean Dupont, CTO @ BigCorp",
-    text: "Allan a su automatiser notre CI/CD et améliorer la fiabilité de nos déploiements. Un vrai atout pour l’équipe !"
-  },
-  {
-    author: "Sophie Martin, Lead Dev @ StartupX",
-    text: "Toujours force de proposition, Allan a apporté une vraie culture DevOps et FullStack à nos projets."
-  }
-];
+import recommendations from '../data/recommendations.json';
 
 export default function Recommendations() {
   const [index, setIndex] = useState(0);
   const len = recommendations.length;
   const intervalRef = useRef(null);
+  const [activeHeight, setActiveHeight] = useState(0);
+  const recommendationRefs = useRef([]);
+
+  // Ajuster la hauteur de la section en fonction du contenu actuel
+  useEffect(() => {
+    if (recommendationRefs.current[index] && recommendationRefs.current[index].scrollHeight) {
+      const newHeight = recommendationRefs.current[index].scrollHeight;
+      setActiveHeight(newHeight);
+      
+      // Applique la hauteur via une propriété CSS personnalisée
+      document.documentElement.style.setProperty('--recommendation-active-height', `${newHeight}px`);
+    }
+  }, [index]);
 
   useEffect(() => {
     // autoplay only if more than one recommendation
@@ -37,7 +40,7 @@ export default function Recommendations() {
         setIndex((i) => (i + 1) % len);
         // schedule subsequent tick
         scheduleNext();
-      }, 10000);
+      }, 15000); // Augmenté à 15 secondes pour les textes plus longs
     };
 
     const handleVisibility = () => {
@@ -62,24 +65,39 @@ export default function Recommendations() {
 
   return (
     <section className="liquid-glass recommendations-section">
-      <div
-        className="recommendations-viewport"
-        onTouchStart={(e) => { if (len > 1) e.preventDefault(); }}
-        onMouseDown={(e) => { if (len > 1) e.preventDefault(); }}
-      >
+      <div className="recommendations-container">
         <div
-          className="recommendations-track"
-          // make track width explicit so percent transforms are predictable
-          style={{ width: `${len * 100}%`, transform: `translateX(-${index * (100 / (len || 1))}%)` }}
+          className={`recommendations-track position-${index}`}
+          data-items={len}
         >
           {recommendations.map((rec, i) => (
-            <blockquote key={i} className="recommendation-item" style={{ width: `${100 / (len || 1)}%` }}>
-              <p>“{rec.text}”</p>
+            <blockquote 
+              key={i} 
+              className={`recommendation-item ${i === index ? 'active' : ''}`}
+              ref={el => recommendationRefs.current[i] = el}
+            >
+              <p>"{rec.text}"</p>
               <footer>{rec.author}</footer>
             </blockquote>
           ))}
         </div>
       </div>
+      
+      {/* Indicateurs de pagination */}
+      {len > 1 && (
+        <div className="recommendation-dots">
+          {Array.from({ length: len }).map((_, i) => (
+            <span 
+              key={i} 
+              className={`dot ${i === index ? 'active' : ''}`}
+              onClick={() => setIndex(i)}
+              role="button"
+              aria-label={`Témoignage ${i + 1}`}
+              tabIndex={0}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 }

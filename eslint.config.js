@@ -1,11 +1,32 @@
-import js from "@eslint/js";
-import globals from "globals";
-import tseslint from "typescript-eslint";
-import pluginReact from "eslint-plugin-react";
-import { defineConfig } from "eslint/config";
+// Remplacer par la configuration ci-dessous
 
-export default defineConfig([
-  { files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"], plugins: { js }, extends: ["js/recommended"], languageOptions: { globals: globals.browser } },
-  tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
+import js from '@eslint/js';
+import { defineFlatConfig } from 'eslint-define-config';
+
+export default defineFlatConfig([
+  js.configs.recommended,
+  {
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        React: true,
+        JSX: true,
+      },
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    plugins: {
+      // Vos plugins ici
+    },
+    rules: {
+      // Vos règles personnalisées ici
+      'semi': ['error', 'always'],
+      'quotes': ['error', 'single'],
+    },
+  },
 ]);
