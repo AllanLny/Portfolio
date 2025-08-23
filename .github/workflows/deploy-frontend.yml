@@ -1,4 +1,4 @@
-name: Deploy Docker Image to Vercel
+name: Deploy to Vercel
 
 on:
   workflow_run:
@@ -19,27 +19,32 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+        
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
       
-      # Suppression du répertoire .vercel s'il existe déjà
       - name: Clean Vercel configs
         run: |
           rm -rf .vercel
       
-      # Lier le dépôt au projet Vercel existant
       - name: Link to existing Vercel project
         run: |
           vercel link --token ${{ secrets.VERCEL_TOKEN }} --yes --scope ${{ secrets.VERCEL_ORG_ID }} --project allan-lannoy-portfolio
       
-      # Création du Dockerfile minimal qui utilise l'image existante
-      - name: Create Docker file
+      - name: Create .env file
         run: |
-          cat > Dockerfile << EOF
-          FROM ghcr.io/${{ github.repository }}:latest
-          # Aucune autre instruction nécessaire car l'image est déjà complète
-          EOF
-      # Creation du vercel.json
+          echo "VITE_EMAILJS_SERVICE_ID=${{ secrets.VITE_EMAILJS_SERVICE_ID }}" > .env
+          echo "VITE_EMAILJS_TEMPLATE_ID=${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}" >> .env
+          echo "VITE_EMAILJS_PUBLIC_KEY=${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}" >> .env
+      
       - name: Create vercel.json
         run: |
           cat > vercel.json << EOF
@@ -48,12 +53,8 @@ jobs:
             "github": {
               "enabled": false
             },
-            "builds": [
-              {
-                "src": "Dockerfile",
-                "use": "@vercel/docker"
-              }
-            ],
+            "buildCommand": "npm run build",
+            "outputDirectory": "dist",
             "routes": [
               { "handle": "filesystem" },
               { "src": "/assets/(.*)", "headers": { "cache-control": "public, max-age=31536000, immutable" } },
@@ -63,25 +64,22 @@ jobs:
           }
           EOF
       
-      # Déploiement de prévisualisation pour les PRs avec l'image Docker
-      - name: Deploy Docker image to Vercel Preview
+      - name: Deploy to Vercel Preview
         if: github.event_name == 'pull_request'
         run: |
           vercel --token ${{ secrets.VERCEL_TOKEN }} --yes > vercel_output.txt
           PREVIEW_URL=$(cat vercel_output.txt)
           echo "PREVIEW_URL=$PREVIEW_URL" >> $GITHUB_ENV
-          echo "::notice title=Preview Deployment::Your Docker app is deployed at $PREVIEW_URL"
+          echo "::notice title=Preview Deployment::Your app is deployed at $PREVIEW_URL"
       
-      # Déploiement en production avec l'image Docker
-      - name: Deploy Docker image to Vercel Production
+      - name: Deploy to Vercel Production
         if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
         run: |
           vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --yes > vercel_output.txt
           PRODUCTION_URL=$(cat vercel_output.txt)
           echo "PRODUCTION_URL=$PRODUCTION_URL" >> $GITHUB_ENV
-          echo "::notice title=Production Deployment::Your Docker app is deployed at $PRODUCTION_URL"
+          echo "::notice title=Production Deployment::Your app is deployed at $PRODUCTION_URL"
       
-      # Notification une fois le déploiement terminé
       - name: Deployment Status
         run: |
           if [[ -n "$PRODUCTION_URL" ]]; then
