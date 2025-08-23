@@ -1,16 +1,40 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-// Désactivé car nous gérons les routes manuellement avec React Router
-// import Pages from 'vite-plugin-pages';
+import imagemin from 'vite-plugin-imagemin';
 
 export default defineConfig({
   plugins: [
     react(),
-    // Désactivé pour éviter les conflits avec notre routage manuel
-    // Pages({
-    //   dirs: 'src/pages',
-    //   extensions: ['jsx', 'tsx']
-    // }),
+    imagemin({
+      gifsicle: {
+        optimizationLevel: 7,
+        interlaced: false
+      },
+      optipng: {
+        optimizationLevel: 7
+      },
+      mozjpeg: {
+        quality: 80
+      },
+      pngquant: {
+        quality: [0.8, 0.9],
+        speed: 4
+      },
+      svgo: {
+        plugins: [
+          {
+            name: 'removeViewBox'
+          },
+          {
+            name: 'removeEmptyAttrs',
+            active: false
+          }
+        ]
+      },
+      webp: {
+        quality: 80
+      }
+    })
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -19,23 +43,19 @@ export default defineConfig({
     }
   },
   server: {
-    // Configuration pour que toutes les routes soient redirigées vers index.html
     host: true,
     port: 3000,
     strictPort: false,
   },
-  // Configuration pour les SPA
   base: '/',
   preview: {
     port: 3000
   },
-  // Configuration pour la production
   build: {
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          // Ajouter d'autres chunks au besoin
         }
       }
     }
