@@ -22,42 +22,37 @@ jobs:
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
       
-      # Lier le dépôt au projet Vercel existant 
+      # Suppression du répertoire .vercel s'il existe déjà
+      - name: Clean Vercel configs
+        run: |
+          rm -rf .vercel
+      
+      # Lier le dépôt au projet Vercel existant
       - name: Link to existing Vercel project
         run: |
           vercel link --token ${{ secrets.VERCEL_TOKEN }} --yes --scope ${{ secrets.VERCEL_ORG_ID }} --project allan-lannoy-portfolio
       
-      # Création du fichier de configuration pour utiliser l'image Docker
-      - name: Configure Docker deployment
+      # Création du Dockerfile minimal qui utilise l'image existante
+      - name: Create Docker file
         run: |
-          mkdir -p .vercel
-          
-          # Créer le fichier project.json pour spécifier l'image Docker
-          cat > .vercel/project.json << EOF
-          {
-            "projectId": "${{ secrets.VERCEL_PROJECT_ID }}",
-            "orgId": "${{ secrets.VERCEL_ORG_ID }}",
-            "settings": {
-              "framework": null,
-              "devCommand": null,
-              "buildCommand": null,
-              "outputDirectory": null,
-              "installCommand": null
-            }
-          }
+          cat > Dockerfile << EOF
+          FROM ghcr.io/${{ github.repository }}:latest
+          # Aucune autre instruction nécessaire car l'image est déjà complète
           EOF
-          
-          # Créer le fichier vercel.json pour la configuration du déploiement Docker
+      
+      # Simplification de l'approche : laisser Vercel détecter la configuration
+      - name: Create vercel.json
+        run: |
           cat > vercel.json << EOF
           {
             "version": 2,
+            "github": {
+              "enabled": false
+            },
             "builds": [
-              { 
-                "src": "Dockerfile", 
-                "use": "@vercel/docker",
-                "config": { 
-                  "image": "ghcr.io/${{ github.repository }}:latest"
-                }
+              {
+                "src": "Dockerfile",
+                "use": "@vercel/docker"
               }
             ],
             "routes": [
@@ -65,17 +60,8 @@ jobs:
               { "src": "/assets/(.*)", "headers": { "cache-control": "public, max-age=31536000, immutable" } },
               { "src": "/(.*\\\\.(js|css|svg|png|jpg|jpeg|gif|webp|ico))", "headers": { "cache-control": "public, max-age=31536000" } },
               { "src": "/(.*)", "dest": "/index.html" }
-            ],
-            "github": {
-              "enabled": false
-            }
+            ]
           }
-          EOF
-          
-          # Créer un Dockerfile minimal qui référence l'image déjà construite
-          cat > Dockerfile << EOF
-          FROM ghcr.io/${{ github.repository }}:latest
-          # Aucune autre instruction nécessaire car l'image est déjà complète
           EOF
       
       # Déploiement de prévisualisation pour les PRs avec l'image Docker
@@ -96,7 +82,7 @@ jobs:
           echo "PRODUCTION_URL=$PRODUCTION_URL" >> $GITHUB_ENV
           echo "::notice title=Production Deployment::Your Docker app is deployed at $PRODUCTION_URL"
       
-      # Notification optionnelle une fois le déploiement terminé
+      # Notification une fois le déploiement terminé
       - name: Deployment Status
         run: |
           if [[ -n "$PRODUCTION_URL" ]]; then
@@ -105,4 +91,8 @@ jobs:
             echo "Preview deployment successful: $PREVIEW_URL"
           else
             echo "Deployment did not produce a URL"
+            if [ -f vercel_output.txt ]; then
+              echo "Vercel output:"
+              cat vercel_output.txt
+            fi
           fi
