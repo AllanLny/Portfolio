@@ -2,10 +2,8 @@ import './About.scss';
 import { useNavigate } from 'react-router-dom';
 
 export default function About() {
-  // Utiliser le hook navigate de React Router
   const navigate = useNavigate();
   
-  // Fonction pour naviguer vers une autre page
   const navigateTo = (path) => {
     navigate(`/${path}`);
   };

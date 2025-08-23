@@ -1,4 +1,3 @@
-// Variables pour ajustement facile
 :root {
   --recommendation-padding: 2.5rem;
   --recommendation-dots-bottom: 1.5rem;
@@ -44,14 +43,13 @@
     margin: 0;
     padding: 0;
     opacity: 0;
-    user-select: none; // Empêche la sélection de texte
+    user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     
     &.active {
       opacity: 1;
-      // Les animations seront appliquées dynamiquement
       &.slide-from-right {
         animation: slideFromRight 0.6s ease-in-out;
       }
@@ -76,7 +74,7 @@
       color: #444;
       display: flex;
       flex-direction: column;
-      user-select: none; // Empêche la sélection de texte
+      user-select: none; 
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
@@ -90,11 +88,11 @@
         color: #444;
         text-align: left;
         width: 100%;
-        overflow-x: auto; // Permet le défilement horizontal
-        overflow-y: auto; // Permet le défilement vertical
+        overflow-x: auto; 
+        overflow-y: auto; 
         flex-grow: 1;
         margin-bottom: 1.5rem;
-        user-select: none; // Empêche la sélection de texte
+        user-select: none; 
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
@@ -103,7 +101,7 @@
         // Style de la scrollbar
         &::-webkit-scrollbar {
           width: 5px;
-          height: 5px; // Hauteur pour scrollbar horizontale
+          height: 5px; 
         }
         
         &::-webkit-scrollbar-track {
@@ -130,8 +128,8 @@
         color: #666;
         width: 100%;
         padding-top: 0.5rem;
-        margin-top: auto; // Pousse le footer en bas
-        user-select: none; // Empêche la sélection de texte
+        margin-top: auto; 
+        user-select: none; 
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
