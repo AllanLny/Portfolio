@@ -6,9 +6,8 @@ import './Home.scss';
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
   const heroRef = useRef(null);
-  const [avatarSrc, setAvatarSrc] = useState('/img/avatar.png');
 
-  // Animation d'entrée avec IntersectionObserver
+  // Animation d'entrée avec IntersectionObserver (conservé car toujours utile)
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -28,42 +27,24 @@ export default function Home() {
     
     return () => observer.disconnect();
   }, []);
-
-  // Essaie de charger l'image avec différentes extensions
-  useEffect(() => {
-    const tryLoadImage = async () => {
-      try {
-        // Vérifie si l'image existe
-        const response = await fetch('/img/avatar.png', { method: 'HEAD' });
-        if (response.ok) {
-          setAvatarSrc('/img/avatar.png');
-        } else {
-          console.log('Image avatar.png non trouvée');
-          setAvatarSrc('/img/avatar-placeholder.png');
-        }
-      } catch (error) {
-        console.log('Erreur de chargement de l\'image');
-        setAvatarSrc('/img/avatar-placeholder.png');
-      }
-    };
-    
-    tryLoadImage();
-  }, []);
   
   return (
     <main className="home-container">
       <section ref={heroRef} className={`minimal-hero ${isVisible ? 'visible' : ''}`}>
         <div className="hero-content">
           <div className="hero-avatar-container">
-            <img 
-              className="hero-avatar" 
-              src={avatarSrc}
-              alt="Allan Lannoy" 
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = '/img/avatar-placeholder.png';
-              }}
-            />
+            <picture>
+              <source srcSet="/img/avatar.webp" type="image/webp" />
+              <img 
+                className="hero-avatar" 
+                src="/img/avatar.png"
+                alt="Allan Lannoy" 
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = '/img/avatar-placeholder.svg';
+                }}
+              />
+            </picture>
           </div>
           
           <div className="hero-text">

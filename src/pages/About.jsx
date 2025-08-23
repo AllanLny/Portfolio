@@ -15,15 +15,19 @@ export default function About() {
         
         <div className="about-content">
           <div className="about-image-container">
-            <img 
-              src="/img/avatar.png" 
-              alt="Allan Lannoy" 
-              className="about-image"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = '/img/avatar-placeholder.png';
-              }}
-            />
+            <picture>
+              <source srcSet="/img/avatar.webp" type="image/webp" />
+              <source srcSet="/img/avatar.avif" type="image/avif" />
+              <img 
+                src="/img/avatar.png" 
+                alt="Allan Lannoy" 
+                className="about-image"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = '/img/avatar-placeholder.svg';
+                }}
+              />
+            </picture>
             <div className="image-decoration"></div>
           </div>
           

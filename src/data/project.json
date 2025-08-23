@@ -3,7 +3,10 @@
     "id": 1,
     "title": "Plateforme FinOps/GreenIt @ Sudo",
     "description": "Conception d'une architecture Cloud sur GCP avec Terraform et pipeline serverless. Développement d'un SaaS multi-tenant (React/FastAPI)",
-    "image": "/img/project1.png",
+    "image": {
+      "optimized": "/img/project1.webp",
+      "fallback": "/img/project1.png"
+    },
     "technologies": ["Terraform", "Google Cloud Platform", "Python", "React", "FastAPI", "Docker", "GitHub Actions", "PostgreSQL"],
     "link": ""
   },
@@ -11,7 +14,10 @@
     "id": 2,
     "title": "Portfolio Personnel",
     "description": "Site vitrine moderne développé avec React et Vite. Déploiement continu via GitHub Actions et hébergement sur Vercel.",
-    "image": "/img/favicon.svg",
+    "image": {
+      "optimized": "/img/favicon.svg",
+      "fallback": "/img/favicon.svg"
+    },
     "technologies": ["React", "Docker", "Vercel", "GitHub Actions" ,"TanStack Query"],
     "link": "https://github.com/AllanLny/Portfolio"
   },
@@ -19,7 +25,10 @@
   "id": 3,
   "title": "CI/CD Pipeline Java/Angular",
   "description": "Mise en place d'un pipeline d'intégration et déploiement continus pour une application Java/Angular.",
-  "image": "/img/openclassrooms.png",
+  "image": {
+    "optimized": "/img/openclassrooms.webp",
+    "fallback": "/img/openclassrooms.png"
+  },
   "technologies": ["Docker",  "SonarQube", "Java", "Spring Boot", "Angular", "GitOps"],
   "link": "https://github.com/AllanLny/JAVAANGULAR-P10"
   },
@@ -27,7 +36,10 @@
   "id": 4,
   "title": "Réseau social MDD pour développeurs",
   "description": "Conception full-stack d'un réseau social pour développeurs. Architecture Spring Boot et Angular avec base de données relationnelle.",
-  "image": "/img/openclassrooms.png",
+  "image": {
+    "optimized": "/img/openclassrooms.webp",
+    "fallback": "/img/openclassrooms.png"
+  },
   "technologies": ["Java Spring Boot", "Angular", "MySQL", "Git", "API REST"],
   "link": "https://github.com/AllanLny/JAVAANGULAR-P10"
   },
@@ -35,7 +47,10 @@
     "id": 5,
     "title": "Tests Automatisés Full-Stack",
     "description": "Implémentation de tests unitaires, d'intégration et E2E pour une application Java/Angular",
-    "image": "/img/openclassrooms.png",
+    "image": {
+      "optimized": "/img/openclassrooms.webp",
+      "fallback": "/img/openclassrooms.png"
+    },
     "technologies": ["JUnit", "Mockito", "Jest", "Cypress", "JaCoCo"],
     "link": "https://github.com/AllanLny/JavaangularP5-BackFront"
   },
@@ -43,7 +58,10 @@
     "id": 6,
     "title": "What Anime Today",
     "description": "Application qui agrège quotidiennement les sorties d'animes par plateforme de streaming.",
-    "image": "/img/what-anime-today.png",
+    "image": {
+      "optimized": "/img/what-anime-today.webp",
+      "fallback": "/img/what-anime-today.png"
+    },
     "technologies": ["React", "GitHub"],
     "link": "https://github.com/AllanLny/WhatAnimeToday",
     "inProgress": true
