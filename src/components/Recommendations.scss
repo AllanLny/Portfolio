@@ -10,31 +10,30 @@
   width: 100%;
   min-height: 200px;
   padding: var(--recommendation-padding);
-  padding-bottom: calc(var(--recommendation-padding) + 2rem); // Espace supplémentaire pour les points
+  padding-bottom: calc(var(--recommendation-padding) + 2rem); 
   margin: 0 auto;
   overflow: visible;
   border-radius: 1.5rem;
   max-width: 1200px;
-  cursor: grab; // Curseur indiquant que l'élément est déplaçable
+  cursor: grab; 
   
   &:active {
-    cursor: grabbing; // Change le curseur pendant le déplacement
+    cursor: grabbing; 
   }
 }
 
 .section-container {
-  // Container des recommandations - Contient les items
   .recommendations-container {
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 150px; // Hauteur minimale
+    min-height: 250px;
     overflow: hidden;
-    user-select: none; // Empêche la sélection de texte
+    user-select: none; 
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    touch-action: pan-y; // Permet le défilement vertical mais bloque horizontal pour swiper
+    touch-action: pan-y; 
   }
   
   // Items de recommandations (un par témoignage)
