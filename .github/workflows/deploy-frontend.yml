@@ -39,8 +39,7 @@ jobs:
           FROM ghcr.io/${{ github.repository }}:latest
           # Aucune autre instruction nécessaire car l'image est déjà complète
           EOF
-      
-      # Simplification de l'approche : laisser Vercel détecter la configuration
+      # Creation du vercel.json
       - name: Create vercel.json
         run: |
           cat > vercel.json << EOF
