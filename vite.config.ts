@@ -44,12 +44,12 @@ export default defineConfig({
   },
   server: {
     host: true,
-    port: 3000,
+    port: 8080,
     strictPort: false,
   },
   base: '/',
   preview: {
-    port: 3000
+    port: 8080
   },
   build: {
     rollupOptions: {
