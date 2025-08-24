@@ -17,13 +17,13 @@ Ce projet met en avant mes compétences en développement web moderne, CI/CD, co
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=FFD62E)
 ![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=fff)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=fff)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=fff)
 ![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=fff)
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=fff)
 ![Vercel](https://img.shields.io/badge/Vercel-000?style=for-the-badge&logo=vercel&logoColor=fff)
 ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=fff)
 ![EmailJS](https://img.shields.io/badge/EmailJS-4A90E2?style=for-the-badge&logo=email&logoColor=fff)
+[![Docker Image Version](https://img.shields.io/badge/GitHub%20Container%20Registry-latest-blue?logo=docker)](https://github.com/AllanLny/Portfolio/pkgs/container/portfolio)
 
 
 ---
@@ -87,6 +87,10 @@ docker run -p 8080:80 allan-portfolio
 - **Sécurité** : Headers HTTP, gestion des secrets via GitHub Actions, .env non versionné
 
 ---
+
+## Architecture CI/CD
+
+![Architecture CI/CD](docs/cicd-architecture.png)
 
 ##  Structure du projet
 
