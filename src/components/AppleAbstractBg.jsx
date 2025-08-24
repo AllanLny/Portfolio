@@ -8,7 +8,6 @@ export default function AppleAbstractBg() {
   const scrollPos = useRef(0);
   const targetScroll = useRef(0);
   
-  // Gérer le mouvement de la souris pour parallax
   useEffect(() => {
     const handleMouseMove = (e) => {
       targetMousePos.current = {
@@ -18,7 +17,6 @@ export default function AppleAbstractBg() {
     };
     
     const handleScroll = () => {
-      // store raw scroll target; we'll interpolate smoothly in the animation loop
       targetScroll.current = window.scrollY;
     };
     
@@ -31,13 +29,10 @@ export default function AppleAbstractBg() {
     };
   }, []);
 
-  // Animation fluide
   useEffect(() => {
     const animate = () => {
-  // Interpolation douce pour le mouvement de souris
   mousePos.current.x += (targetMousePos.current.x - mousePos.current.x) * 0.05;
   mousePos.current.y += (targetMousePos.current.y - mousePos.current.y) * 0.05;
-  // Interpolation douce pour le scroll (smooth parallax)
   scrollPos.current += (targetScroll.current - scrollPos.current) * 0.08;
       
       if (svgRef.current) {
@@ -48,7 +43,6 @@ export default function AppleAbstractBg() {
         const blur5 = svgRef.current.querySelector("#blur5");
         
         if (blur1 && blur2 && blur3 && blur4 && blur5) {
-          // Déplacement parallaxe (utilise scroll interpolé pour fluidité)
           const s = scrollPos.current;
           blur1.setAttribute('cx', `${900 - mousePos.current.x * 30 + Math.sin(s * 0.02) * 20}`);
           blur1.setAttribute('cy', `${300 - mousePos.current.y * 20 - s * 0.5}`);
@@ -109,7 +103,6 @@ export default function AppleAbstractBg() {
         }}
       >
         <defs>
-          {/* Gradients pour les formes */}
           <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#4facfe" stopOpacity="0.7" />
             <stop offset="100%" stopColor="#00f2fe" stopOpacity="0.4" />
@@ -135,7 +128,6 @@ export default function AppleAbstractBg() {
             <stop offset="100%" stopColor="#fecfef" stopOpacity="0.3" />
           </linearGradient>
           
-          {/* Filtres pour effets liquides */}
           <filter id="liquidGlow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="30" result="blur" />
             <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -7" result="liquid" />
@@ -147,7 +139,6 @@ export default function AppleAbstractBg() {
           </filter>
         </defs>
         
-        {/* Formes liquides */}
         <g filter="url(#softBlur)">
           <circle id="blur1" cx="900" cy="300" r="300" fill="url(#blueGradient)" opacity="0.9" />
           <circle id="blur2" cx="500" cy="650" r="250" fill="url(#purpleGradient)" opacity="0.85" />
@@ -156,11 +147,9 @@ export default function AppleAbstractBg() {
           <circle id="blur5" cx="750" cy="500" r="200" fill="url(#pinkGradient)" opacity="0.7" />
         </g>
         
-        {/* Overlay pour atténuer un peu l'effet */}
         <rect width="100%" height="100%" fill="rgba(255,255,255,0.3)" />
       </svg>
       
-      {/* Effet de grain pour texture */}
       <div
         style={{
           position: "absolute",

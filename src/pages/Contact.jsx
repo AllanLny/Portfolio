@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import './Contact.scss';
 
-// récupérer les variables d'environnement (Vite expose import.meta.env.VITE_*)
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
@@ -45,7 +44,6 @@ export default function Contact() {
       return;
     }
 
-    // Préparer les params explicitement (évite les incompatibilités avec le template)
     const templateParams = {
       from_name: formState.name,
       from_email: formState.email,
@@ -64,7 +62,6 @@ export default function Contact() {
       })
       .catch((error) => {
         console.error('EmailJS send error', error);
-        // essayer d'extraire info utile
         const errMsg = (error && error.text) ? error.text : (error && error.statusText) ? error.statusText : 'Une erreur est survenue.';
         setStatus({ submitted: false, submitting: false, info: { error: true, msg: `Envoi échoué : ${errMsg}` } });
       });
@@ -117,7 +114,6 @@ export default function Contact() {
             </div>
           </form>
 
-          {/* contacts directs */}
           <div className="contact-methods" style={{ marginTop: '1.5rem' }}>
             <h3>Autres moyens de contact</h3>
             <div className="contact-links">

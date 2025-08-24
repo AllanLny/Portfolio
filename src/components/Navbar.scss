@@ -43,6 +43,15 @@
   color: var(--text);
   text-decoration: none;
   font-weight: 600;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
+  backdrop-filter: blur(0px);
+}
+.nav-list a:hover,
+.nav-list a:focus {
+  background: linear-gradient(120deg, rgba(255,255,255,0.45) 0%, rgba(110,142,251,0.13) 100%);
+  color: var(--accent);
+  box-shadow: 0 2px 12px rgba(110,142,251,0.10), 0 1px 4px rgba(255,255,255,0.10) inset;
+  backdrop-filter: blur(8px) saturate(180%);
 }
 
 .nav-list a.active {
