@@ -90,7 +90,7 @@ docker run -p 8080:80 allan-portfolio
 
 ## Architecture CI/CD
 
-![Architecture CI/CD](docs/cicd-architecture.png)
+<img src="docs/cicd-architecture.png" alt="Architecture CI/CD" width="150"/>
 
 ##  Structure du projet
 
