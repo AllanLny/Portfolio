@@ -1,15 +1,7 @@
-.contact-section {
-  min-height: calc(100vh);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1rem;
-  margin-top: 30px;
-
-  
-  .contact-container {
+    .contact-container {
     width: min(1200px, 92%);
     margin: 0 auto;
+    margin-top: 150px;
     padding: 2.5rem;
     
     h2 {
@@ -184,7 +176,7 @@
       }
     }
   }
-}
+
 
 @keyframes fadeIn {
   from {

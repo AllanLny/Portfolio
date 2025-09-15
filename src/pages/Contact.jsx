@@ -80,8 +80,7 @@ export default function Contact() {
   }, []);
 
   return (
-    <section className="contact-section">
-      <div className="liquid-glass contact-container">
+      <section className="liquid-glass contact-container">
         <h2>Contact</h2>
         <p className="contact-intro">
           Vous souhaitez discuter d'un projet ou en savoir plus sur mes services ? N'hésitez pas à me contacter via le formulaire ci-dessous ou en utilisant l'un des moyens de communication directs.
@@ -226,7 +225,6 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 }
