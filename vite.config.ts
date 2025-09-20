@@ -42,6 +42,17 @@ export default defineConfig({
       '@': '/src'
     }
   },
+  build: {
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['react', 'react-dom'],
+          'background': ['/src/utils/BlurGradientBg.js']
+        }
+      }
+    }
+  },
   server: {
     host: true,
     port: 8080,

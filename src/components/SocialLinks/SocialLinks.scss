@@ -1,0 +1,16 @@
+.hero-social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  
+  a {
+    color: var(--text);
+    transition: color 0.3s ease, transform 0.2s ease;
+    
+    &:hover {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+  }
+}

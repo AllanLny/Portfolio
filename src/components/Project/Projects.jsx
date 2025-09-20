@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchProjects } from '../api/projects';
-import ProjectCard from './ProjectCard';
+import { fetchProjects } from '../../api/projects';
+import ProjectCard from '../ProjectCard/ProjectCard';
 import './Projects.scss';
 
 export default function Projects() {

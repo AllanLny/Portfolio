@@ -2,6 +2,11 @@
   padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  color: var(--text);
+
+  h2, h3, p {
+    color: var(--text);
+  }
 }
 
 

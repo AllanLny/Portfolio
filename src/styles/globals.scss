@@ -1,12 +1,39 @@
-:root{
-  --bg: #f5f7fb;
-  --text: #1f2937;
+:root {
+  --bg: transparent;
+  --text: #ffffff;
   --accent: #6e8efb;
   /* Liquid glass palette */
   --glass-bg: rgba(255,255,255,0.12);
   --glass-border: rgba(255,255,255,0.25);
   --glass-shadow: 0 8px 32px rgba(31,38,135,0.08);
   --glass-accent: rgba(110,142,251,0.12);
+  
+  /* Liquid gradient variables */
+  --liquid-bg: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  --liquid-blur: blur(10px);
+  --liquid-border: 1px solid rgba(255,255,255,0.18);
+  
+}
+
+/* Styles globaux pour le texte */
+body {
+  color: var(--text);
+}
+
+h1, h2, h3, h4, h5, h6, p, span, a, li, button {
+  color: var(--text);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 *{box-sizing:border-box}
@@ -31,7 +58,7 @@ p{margin:0 0 1rem}
 }
 .btn.secondary{background:rgba(0,0,0,0.06);color:var(--text)}
 
-/* Utility: Liquid Glass — applique l'effet verre liquide */
+/* Liquid Glass Effect */
 .liquid-glass,
 .glass-card,
 .hero-glass,
@@ -53,9 +80,15 @@ p{margin:0 0 1rem}
   box-shadow: var(--glass-shadow);
   transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
   -webkit-font-smoothing: antialiased;
-  position: relative; /* nécessaire pour pseudo-elements */
+  position: relative; 
 }
 
 
-
-
+.content-wrapper{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}

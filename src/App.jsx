@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
-import About from './pages/About';
-import Navbar from './components/Navbar';
+import About from './pages/About.jsx';
+import Navbar from './components/Navbar/Navbar';
 import Contact from './pages/Contact';
-import AppleAbstractBg from './components/AppleAbstractBg';
+import AppleAbstractBg from './components/Background/AppleAbstractBg';
 
 function ScrollToTopOnNavigation() {
   const { pathname } = useLocation();
