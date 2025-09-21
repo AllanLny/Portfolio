@@ -5,6 +5,7 @@ import About from './pages/About.jsx';
 import Navbar from './components/Navbar/Navbar';
 import Contact from './pages/Contact';
 import AppleAbstractBg from './components/Background/AppleAbstractBg';
+import './styles/globals.scss';
 
 function ScrollToTopOnNavigation() {
   const { pathname } = useLocation();
@@ -20,7 +21,7 @@ export default function App() {
       <AppleAbstractBg />
       <Navbar />
       <ScrollToTopOnNavigation />
-      <main className="content-wrapper">
+      <main className="content-wrapper" style={{ color: 'white' }}>
         <Routes>
           <Route path="/" element={<Home />} />
            <Route path="/about" element={<About />} />

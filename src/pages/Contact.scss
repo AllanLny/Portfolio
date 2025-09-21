@@ -1,10 +1,26 @@
-    .contact-container {
-    max-width: 1200px;
-    width: 95%;
-    margin: 0 auto;
-    padding: 2.5rem;
-    justify-content: center;
-    align-items: center;
+.contact-section {
+  max-width: 1200px;
+  margin: 48px auto 0 auto;
+  background: var(--liquid-bg);
+  border-radius: 24px;
+  box-shadow: var(--glass-shadow);
+  border: var(--glass-border);
+  position: relative;
+  backdrop-filter: var(--liquid-blur) saturate(160%);
+  -webkit-backdrop-filter: var(--liquid-blur) saturate(160%);
+  overflow: hidden;
+
+  .contact-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  background: transparent;
+  border-radius: 24px;
+  box-shadow: none;
+  border: none;
+  position: relative;
+  z-index: 1;
+    
     
     h2 {
     font-size: 2.5rem;
@@ -16,7 +32,7 @@
     
     .contact-intro {
       margin-bottom: 2.5rem;
-      color: #333;
+      color: #ffffff;
       text-align: center;
       max-width: 700px;
       margin-left: auto;
@@ -42,7 +58,7 @@
           display: block;
           margin-bottom: 0.5rem;
           font-weight: 500;
-          color: #333;
+          color: #ffffff;
         }
         
         input, textarea {
@@ -52,7 +68,7 @@
           border: 1px solid rgba(255, 255, 255, 0.3);
           border-radius: 12px;
           font-size: 1rem;
-          color: #333;
+          color: #ffffff;
           transition: all 0.3s ease;
           
           &:focus {
@@ -73,34 +89,49 @@
         }
       }
       
-      .submit-btn {
-          background: linear-gradient(135deg, #6e8efb, #a777e3);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 100px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            margin-top: auto;
-            text-decoration: none;
-            
-            &:hover {
-              transform: translateY(-2px);
-              box-shadow: 0 5px 15px rgba(106,142,251,0.4);
-            }
-        
-        &:active {
-          transform: translateY(-1px);
-        }
-        
-        &:disabled {
-          opacity: 0.7;
-          cursor: not-allowed;
-          transform: none;
-        }
-      }
+.submit-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 18px;
+        border-radius: 999px;
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s, color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
+        background: linear-gradient(180deg, 
+          rgba(255, 255, 255, 0.16) 0%,
+          rgba(255, 255, 255, 0.24) 100%
+        );
+        box-shadow: 
+          0 8px 24px rgba(0, 0, 0, 0.12),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(14px) saturate(200%);
+        -webkit-backdrop-filter: blur(14px) saturate(200%);
+        transform: translateY(-1px);
+      
+
+  &:hover,
+  &:focus {
+    color: var(--accent);
+    background: linear-gradient(180deg, 
+      rgba(255, 255, 255, 0.20) 0%,
+      rgba(255, 255, 255, 0.32) 100%
+    );
+    box-shadow: 0 5px 15px rgba(106,142,251,0.4);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
       
       .form-message {
         margin-top: 1.5rem;
@@ -127,13 +158,24 @@
       h3 {
         margin-top: 0;
         margin-bottom: 1.5rem;
-        color: #333;
+        color: #ffffff;
       }
       
       .contact-links {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+
+        & a {
+          color: #ffffff !important;
+          text-decoration: none;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: var(--accent);
+          }
+        }
+
       }
       
       .contact-link, .contact-phone {
@@ -145,7 +187,7 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 12px;
         text-decoration: none;
-        color: #333;
+        color: #ffffff;
         font-weight: 500;
         transition: all 0.3s ease;
         
@@ -166,7 +208,7 @@
         background: rgba(255, 255, 255, 0.08);
         border-radius: 12px;
         font-style: italic;
-        color: #666;
+        color: #ffffff;
         display: flex;
         align-items: center;
         gap: 0.8rem;
@@ -193,4 +235,5 @@
   box-shadow:
     0 8px 32px rgba(0,0,0,0.1),
     0 1px 8px rgba(255,255,255,0.1) inset;
+}
 }

@@ -12,27 +12,6 @@ export default defineConfig({
       },
       optipng: {
         optimizationLevel: 7
-      },
-      mozjpeg: {
-        quality: 80
-      },
-      pngquant: {
-        quality: [0.8, 0.9],
-        speed: 4
-      },
-      svgo: {
-        plugins: [
-          {
-            name: 'removeViewBox'
-          },
-          {
-            name: 'removeEmptyAttrs',
-            active: false
-          }
-        ]
-      },
-      webp: {
-        quality: 80
       }
     })
   ],
@@ -62,13 +41,5 @@ export default defineConfig({
   preview: {
     port: 8080
   },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-        }
-      }
-    }
-  }
+// ...existing code...
 });

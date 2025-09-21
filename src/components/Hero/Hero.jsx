@@ -31,7 +31,8 @@ export default function Hero() {
 
   return (
     <section ref={heroRef} className={`minimal-hero ${isVisible ? 'visible' : ''}`}>
-      <div className="hero-content">
+      <div className="hero-content liquid-glass">
+        <div className="liquid-glass-specular"></div>
         <div className="hero-avatar">
           <Avatar />
         </div>

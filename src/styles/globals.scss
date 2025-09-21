@@ -1,7 +1,7 @@
 :root {
   --bg: transparent;
   --text: #ffffff;
-  --accent: #6e8efb;
+  --accent: #ffffff;
   /* Liquid glass palette */
   --glass-bg: rgba(255,255,255,0.12);
   --glass-border: rgba(255,255,255,0.25);
@@ -9,7 +9,7 @@
   --glass-accent: rgba(110,142,251,0.12);
   
   /* Liquid gradient variables */
-  --liquid-bg: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    --liquid-bg: linear-gradient(135deg, rgba(40,40,60,0.18), rgba(40,40,60,0.12));
   --liquid-blur: blur(10px);
   --liquid-border: 1px solid rgba(255,255,255,0.18);
   
@@ -62,19 +62,17 @@ p{margin:0 0 1rem}
 .liquid-glass,
 .glass-card,
 .hero-glass,
-.resume-section,
-.projects-section,
-.recommendations-section,
-.certifications-section,
-.skills-section,
-.contact-section,
 .card,
 .panel,
 .section,
 .container,
 .btn,
-.btn.secondary {
-  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.06));
+.btn.secondary,
+.submit-btn,
+.view-project, 
+.cta-button {
+
+   background: linear-gradient(135deg, rgba(40,40,60,0.18), rgba(40,40,60,0.12));
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   box-shadow: var(--glass-shadow);
@@ -83,6 +81,48 @@ p{margin:0 0 1rem}
   position: relative; 
 }
 
+.liquid-glass {
+  position: relative;
+  background: var(--liquid-bg);
+  border-radius: 999px;
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  overflow: hidden;
+  transition: background 0.3s, box-shadow 0.3s, border 0.3s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    border-radius: inherit;
+    filter: saturate(120%) brightness(1.15);
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.25);
+    pointer-events: none;
+  }
+
+  .liquid-glass-specular {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    box-shadow: 
+      inset 1px 1px 0 rgba(255, 255, 255, 0.75),
+      inset 0 0 5px rgba(255, 255, 255, 0.75);
+    pointer-events: none;
+  }
+}
 
 .content-wrapper{
   min-height: 100vh;
