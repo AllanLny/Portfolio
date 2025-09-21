@@ -2,17 +2,16 @@
   --bg: transparent;
   --text: #ffffff;
   --accent: #ffffff;
-  /* Liquid glass palette */
-  --glass-bg: rgba(255,255,255,0.12);
-  --glass-border: rgba(255,255,255,0.25);
-  --glass-shadow: 0 8px 32px rgba(31,38,135,0.08);
+  /* Liquid glass palette glacée et transparente */
+  --glass-bg: rgba(40,40,60,0.18);
+  --glass-border: rgba(255,255,255,0.18);
+  --glass-shadow: 0 8px 32px rgba(0,0,0,0.12);
   --glass-accent: rgba(110,142,251,0.12);
-  
-  /* Liquid gradient variables */
-    --liquid-bg: linear-gradient(135deg, rgba(40,40,60,0.18), rgba(40,40,60,0.12));
+
+  /* Liquid gradient variables glacées */
+  --liquid-bg: linear-gradient(135deg, rgba(40,40,60,0.22), rgba(255,255,255,0.12));
   --liquid-blur: blur(10px);
   --liquid-border: 1px solid rgba(255,255,255,0.18);
-  
 }
 
 /* Styles globaux pour le texte */
@@ -71,11 +70,11 @@ p{margin:0 0 1rem}
 .submit-btn,
 .view-project, 
 .cta-button {
-
-   background: linear-gradient(135deg, rgba(40,40,60,0.18), rgba(40,40,60,0.12));
+  background: var(--liquid-bg);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   box-shadow: var(--glass-shadow);
+  color: #fff;
   transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
   -webkit-font-smoothing: antialiased;
   position: relative; 
@@ -98,7 +97,7 @@ p{margin:0 0 1rem}
     inset: 0;
     z-index: -3;
     border-radius: inherit;
-    filter: saturate(120%) brightness(1.15);
+    filter: saturate(120%) brightness(1.08);
     pointer-events: none;
   }
 
@@ -108,7 +107,7 @@ p{margin:0 0 1rem}
     inset: 0;
     z-index: -2;
     border-radius: inherit;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255,255,255,0.18);
     pointer-events: none;
   }
 
@@ -118,8 +117,8 @@ p{margin:0 0 1rem}
     z-index: -1;
     border-radius: inherit;
     box-shadow: 
-      inset 1px 1px 0 rgba(255, 255, 255, 0.75),
-      inset 0 0 5px rgba(255, 255, 255, 0.75);
+      inset 1px 1px 0 rgba(255,255,255,0.32),
+      inset 0 0 12px rgba(255,255,255,0.18);
     pointer-events: none;
   }
 }
