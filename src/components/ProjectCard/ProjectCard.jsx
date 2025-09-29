@@ -13,7 +13,7 @@ export default function ProjectCard({ project, isActive, onActivate }) {
             {project.image && (
               <picture>
                 <source srcSet={project.image.optimized} type="image/webp" />
-                <img src={project.image.fallback} alt={project.title} />
+                <img src={project.image.fallback} alt={project.title} loading="lazy" />
               </picture>
             )}
           </div>

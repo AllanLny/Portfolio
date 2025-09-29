@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import imagemin from 'vite-plugin-imagemin';
+import purgecss from 'vite-plugin-purgecss';
 
 export default defineConfig({
   plugins: [
@@ -13,7 +14,8 @@ export default defineConfig({
       optipng: {
         optimizationLevel: 7
       }
-    })
+    }),
+    purgecss()
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],

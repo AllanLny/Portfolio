@@ -9,7 +9,8 @@ export default function Avatar() {
         <img 
           className="hero-avatar" 
           src="/img/avatar.png"
-          alt="Allan Lannoy" 
+          alt="Allan Lannoy"
+          loading="lazy"
           onError={(e) => {
             e.target.onerror = null;
             e.target.src = '/img/avatar-placeholder.svg';
