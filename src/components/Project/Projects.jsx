@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchProjects } from '../api/projects';
-import ProjectCard from './ProjectCard';
+import { fetchProjects } from '../../api/projects';
+import { useState } from 'react';
+import ProjectCard from '../ProjectCard/ProjectCard';
 import './Projects.scss';
 
 export default function Projects() {
@@ -11,9 +12,12 @@ export default function Projects() {
     refetchOnWindowFocus: false
   });
 
+  const [activeIndex, setActiveIndex] = useState(null);
+
   return (
     <section id="projects" className="projects-section">
       <div className="liquid-glass section-container">
+        <div className="liquid-glass-specular"></div>
         <h2>Projets récents</h2>
         <p className="section-intro">
           Voici une sélection de projets récents sur lesquels j'ai travaillé.
@@ -31,8 +35,13 @@ export default function Projects() {
               Une erreur s'est produite lors du chargement des projets.
             </p>
           ) : (
-            data.map(project => (
-              <ProjectCard key={project.id} project={project} />
+            data.map((project, i) => (
+              <ProjectCard
+                key={i}
+                project={project}
+                isActive={activeIndex === i}
+                onActivate={() => setActiveIndex(activeIndex === i ? null : i)}
+              />
             ))
           )}
         </div>

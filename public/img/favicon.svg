@@ -1,11 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#4facfe" />
-      <stop offset="100%" stop-color="#00f2fe" />
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#bb58d9"/>
+      <stop offset="100%" stop-color="#363bd3"/>
     </linearGradient>
+    <filter id="glass" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <rect x="0" y="0" width="32" height="32" rx="8" fill="url(#gradient)" />
-  <text x="16" y="22" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">AL</text>
+  <rect width="64" height="64" rx="16" fill="url(#bg)" filter="url(#glass)"/>
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
+        font-family="Helvetica, Arial, sans-serif" font-size="32" font-weight="bold"
+        fill="#fff" opacity="0.92" style="text-shadow:0 2px 8px #363bd3;">
+    AL
+  </text>
 </svg>

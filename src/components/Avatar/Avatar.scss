@@ -1,0 +1,16 @@
+.hero-avatar-container {
+  margin-bottom: 2rem;
+  
+  .hero-avatar {
+    width: 185px;
+    height: 185px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

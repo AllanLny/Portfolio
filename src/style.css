@@ -9,6 +9,7 @@ html, body, #root {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  background-color: transparent;
 }
 
 /* Autoriser le défilement vertical normal */
@@ -20,6 +21,7 @@ body {
   overflow: auto;
   position: relative;
 }
+
 
 /* Styles personnalisés pour la barre de défilement */
 ::-webkit-scrollbar {

@@ -1,0 +1,221 @@
+// Layer dégradé noir pour améliorer le contraste de la navbar sur mobile
+.navbar-mobile-gradient {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .navbar-mobile-gradient {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 120px;
+    pointer-events: none;
+    z-index: 1199;
+    background: linear-gradient(
+      to top,
+      rgba(10,10,20,0.85) 0%,
+      rgba(10,10,20,0.55) 40%,
+      rgba(10,10,20,0.0) 100%
+    );
+  }
+}
+.navbar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15px;
+  width: min(720px, calc(100% - 48px));
+  height: 72px;
+  display: flex;
+  align-items: center;
+  z-index: 1200;
+  padding: 0 14px;
+
+  a {
+    color: var(--text);
+    text-decoration: none;
+    
+    &:hover,
+    &:focus {
+      color: var(--text);
+    }
+    
+    &.active {
+      color: var(--text);
+    }
+  }
+}
+
+.navbar--glass {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 999px;
+  overflow: hidden;
+  position: fixed;
+
+  .nav-glass-oval {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 340px;
+    height: 80px;
+    background: linear-gradient(120deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 100%);
+    border-radius: 120px 80px 120px 80px / 80px 120px 80px 120px;
+    filter: blur(18px) saturate(180%);
+    opacity: 0.7;
+    transform: translate(-50%, -50%);
+    z-index: -4;
+    animation: oval-move 6s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    border-radius: inherit;
+    filter: saturate(120%) brightness(1.15);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .nav-glass-specular {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    box-shadow: 
+      inset 1px 1px 0 rgba(255, 255, 255, 0.75),
+      inset 0 0 5px rgba(255, 255, 255, 0.75);
+  }
+}
+
+@keyframes oval-move {
+  0% {
+    transform: translate(-50%, -50%) scale(1.05) rotate(-8deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-48%, -52%) scale(1.15) rotate(8deg);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(-52%, -48%) scale(1.05) rotate(-8deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes liquid-move {
+  0% {
+    --liquid-x: 25%;
+    --liquid-y: 30%;
+  }
+  50% {
+    --liquid-x: 75%;
+    --liquid-y: 60%;
+  }
+  100% {
+    --liquid-x: 35%;
+    --liquid-y: 40%;
+  }
+}
+
+@keyframes liquid-move-2 {
+  0% {
+    --liquid-x2: 70%;
+    --liquid-y2: 40%;
+  }
+  50% {
+    --liquid-x2: 30%;
+    --liquid-y2: 65%;
+  }
+  100% {
+    --liquid-x2: 65%;
+    --liquid-y2: 35%;
+  }
+}
+
+@keyframes liquid-glass-flow {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.nav-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0 8px;
+}
+.nav-list a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
+  background: none;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.nav-list a:hover,
+.nav-list a:focus {
+  color: var(--accent);
+  background: none;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.nav-list a.active {
+  background: linear-gradient(180deg, 
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(255, 255, 255, 0.24) 100%
+  );
+  color: var(--accent);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(14px) saturate(200%);
+  -webkit-backdrop-filter: blur(14px) saturate(200%);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    width: calc(100% - 32px);
+    height: 64px;
+    bottom: 18px;
+    top: auto;
+    position: fixed;
+  }
+  .nav-list { gap: 14px; }
+  .nav-list a { 
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}

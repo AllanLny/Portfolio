@@ -1,83 +1,52 @@
-import './About.scss';
+import Avatar from '../components/Avatar/Avatar';
+import SocialLinks from '../components/SocialLinks/SocialLinks';
 import { useNavigate } from 'react-router-dom';
+import './About.scss';
+import SkillCard from '../components/SkillCard/SkillCard';
 
 export default function About() {
   const navigate = useNavigate();
-  
-  const navigateTo = (path) => {
-    navigate(`/${path}`);
-  };
-  
   return (
-    <section className="about-section">
-      <div className="liquid-glass about-container">
-        <h2>À propos de moi</h2>
-        
+    <main className="about-container">
+      <section className="about-section liquid-glass">
+        <div className="liquid-glass-specular"></div>
         <div className="about-content">
-          <div className="about-image-container">
-            <picture>
-              <source srcSet="/img/avatar.webp" type="image/webp" />
-              <source srcSet="/img/avatar.avif" type="image/avif" />
-              <img 
-                src="/img/avatar.png" 
-                alt="Allan Lannoy" 
-                className="about-image"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = '/img/avatar-placeholder.svg';
-                }}
-              />
-            </picture>
-            <div className="image-decoration"></div>
+          <div className="about-profile">
+            <div className="about-header">
+              <h2 className="about-title">À propos de moi</h2>
+              <p className="about-intro">
+                Ingénieur DevOps & Développeur Full-Stack, spécialisé dans <strong>l'orchestration cloud avec Google Cloud Platform</strong> et le développement d'applications web modernes. Autonome et curieux, je valorise le travail en équipe, l'entraide et les échanges techniques.
+              </p>
+            </div>
+            <div>
+              <Avatar />
+              <SocialLinks />
+            </div>
           </div>
-          
-          <div className="about-text">
-            <p className="about-intro">
-              Ingénieur DevOps & Développeur Full-Stack, je suis spécialisé dans <strong>l'orchestration cloud avec Google Cloud Platform</strong> et le développement d'applications web modernes. Autonome et curieux, je valorise le travail en équipe, l'entraide et les échanges techniques.
-            </p>
-            
-            <div className="about-info">
+          <div className="about-main">
+            <section className="about-info">
               <h3>Mon expertise</h3>
               <p>
-                Je conçois et déploie des architectures Cloud complètes sur GCP avec Terraform, couvrant plusieurs environnements (dev/préprod/prod). Mon expérience inclut l'intégration de services comme Pub/Sub, Cloud Storage, Cloud Run Functions avec Python, BigQuery, IAM, et les systèmes de monitoring.
+                Architectures Cloud sur GCP avec Terraform, multi-environnements (dev/préprod/prod), intégration Pub/Sub, Cloud Storage, Cloud Run Functions (Python), BigQuery, IAM, monitoring.
               </p>
               <p>
-                J'ai orchestré des pipelines serverless event-driven pour l'ingestion et la transformation de données, et développé des solutions SaaS multi-tenant avec React, SCSS, FastAPI et PostgreSQL. Ma philosophie est centrée sur l'optimisation des processus et la création de solutions élégantes qui résolvent des problèmes concrets.
+                Pipelines serverless event-driven, ingestion/transformation de données, solutions SaaS multi-tenant (React, SCSS, FastAPI, PostgreSQL). Philosophie : optimisation et solutions élégantes pour des problèmes concrets.
               </p>
-              
               <h3>Compétences techniques</h3>
-              <div className="skills-grid">
-                <div className="skill-category">
-                  <h4>Cloud & DevOps</h4>
-                  <ul>
-                    <li>Terraform (IaC)</li>
-                    <li>Google Cloud Platform</li>
-                    <li>CI/CD (GitHub Actions)</li>
-                    <li>Docker</li>
-                    <li>GitOps</li>
-                    <li>SonarQube</li>
-                  </ul>
-                </div>
-                <div className="skill-category">
-                  <h4>Développement</h4>
-                  <ul>
-                    <li>React, SCSS</li>
-                    <li>Python</li>
-                    <li>Java Spring Boot</li>
-                    <li>FastAPI</li>
-                    <li>Tests (Jest, JUnit, Cypress)</li>
-                  </ul>
-                </div>
-                <div className="skill-category">
-                  <h4>Bases de données</h4>
-                  <ul>
-                    <li>PostgreSQL</li>
-                    <li>MongoDB</li>
-                    <li>BigQuery</li>
-                  </ul>
-                </div>
+              <div className="projects-grid">
+                <SkillCard
+                  title="Cloud & DevOps"
+                  skills={["Terraform (IaC)", "Google Cloud Platform", "CI/CD (GitHub Actions)", "Docker", "GitOps", "SonarQube", "FinOps", "GreenIt"]}
+                />
+                <SkillCard
+                  title="Développement"
+                  skills={["React, SCSS", "Python", "Java Spring Boot", "FastAPI", "Tests (Jest, JUnit, Cypress)"]}
+                />
+                <SkillCard
+                  title="Bases de données"
+                  skills={["PostgreSQL", "MongoDB", "BigQuery"]}
+                />
               </div>
-              
               <h3>Mes valeurs</h3>
               <ul className="values-list">
                 <li>
@@ -93,26 +62,25 @@ export default function About() {
                   <span className="value-text">Mise en production sécurisée et contrôlée</span>
                 </li>
               </ul>
-              
               <div className="about-cta">
                 <button 
-                  onClick={() => navigateTo('contact')}
-                  className="cta-button"
+                  onClick={() => navigate('/contact')}
+                  className="btn-glass"
                 >
                   Me contacter
                 </button>
                 <a 
                   href="/files/Allan_Lannoy_CV_Ingénieur_DevOps_FullStack.pdf" 
                   download="Allan_Lannoy_CV_Ingénieur_DevOps_FullStack.pdf"
-                  className="cta-button secondary"
+                  className="btn-glass"
                 >
                   Télécharger mon CV
                 </a>
               </div>
-            </div>
+            </section>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }

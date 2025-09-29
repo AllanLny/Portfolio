@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Recommendations.scss';
-import recommendations from '../data/recommendations.json';
+import recommendations from '../../data/recommendations.json';
 
 export default function Recommendations() {
   const [index, setIndex] = useState(0);
@@ -37,14 +37,16 @@ export default function Recommendations() {
         if (item) {
           item.style.position = 'absolute';
           item.style.width = '100%';
-          item.style.transform = `translateX(${(i - index) * 100}%)`;
-          item.style.transition = isDragging ? 'none' : 'transform 600ms cubic-bezier(.22,.9,.31,1)';
-          item.style.opacity = i === index ? '1' : '0';
+          // Slide fluide : les deux textes bougent en même temps
+          item.style.transform = `translateX(${(i - index) * 100 + (isDragging ? scrollLeft / containerRef.current.offsetWidth * 100 : 0)}%)`;
+          item.style.transition = isDragging ? 'none' : 'transform 420ms cubic-bezier(.22,.9,.31,1), opacity 420ms cubic-bezier(.22,.9,.31,1)';
+          // Opacité : le texte sortant disparaît, le nouveau apparaît
+          item.style.opacity = Math.max(0, 1 - Math.abs((i - index) + (isDragging ? scrollLeft / containerRef.current.offsetWidth : 0)));
           item.style.pointerEvents = i === index ? 'all' : 'none';
         }
       });
     }
-  }, [index, isDragging]);
+  }, [index, isDragging, scrollLeft]);
 
   const handleMouseDown = (e) => {
     if (
@@ -105,19 +107,19 @@ export default function Recommendations() {
 
   const handleMouseUp = () => {
     if (!isDragging) return;
-    
     setIsDragging(false);
-    
-    const threshold = containerRef.current.offsetWidth * 0.2; 
-    
+    const threshold = containerRef.current.offsetWidth * 0.18;
+    // Si le drag est trop faible, on annule le slide
     if (scrollLeft > threshold) {
       setSlideDirection('slide-from-left');
       setIndex(prev => (prev - 1 + recommendations.length) % recommendations.length);
     } else if (scrollLeft < -threshold) {
       setSlideDirection('slide-from-right');
       setIndex(prev => (prev + 1) % recommendations.length);
+    } else {
+      // Annule le slide, revient à la position initiale
+      setScrollLeft(0);
     }
-    
     resetTimer();
   };
 
@@ -173,6 +175,7 @@ export default function Recommendations() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
+      <div className="liquid-glass-specular"></div>
       <div 
         className="recommendations-container" 
         ref={containerRef}

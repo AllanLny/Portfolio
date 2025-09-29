@@ -1,14 +1,11 @@
-import { useState } from "react";
 import "./ProjectCard.scss";
 
-export default function ProjectCard({ project }) {
-  const [isHovered, setIsHovered] = useState(false);
-  
+export default function ProjectCard({ project, isActive, onActivate }) {
+
   return (
-    <div 
-      className={`project-card ${isHovered ? 'hovered' : ''}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    <div
+      className={`project-card${isActive ? ' active' : ''}`}
+      onClick={onActivate}
     >
       <div className="card-inner">
         <div className="card-front">

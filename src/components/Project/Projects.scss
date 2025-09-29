@@ -1,0 +1,29 @@
+.section-container{
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 48px auto 0 auto;
+  background: var(--liquid-bg);
+  border-radius: 24px;
+  box-shadow: var(--glass-shadow);
+  border: var(--glass-border);
+  position: relative;
+  backdrop-filter: var(--liquid-blur) saturate(160%);
+  -webkit-backdrop-filter: var(--liquid-blur) saturate(160%);
+  overflow: hidden;
+  color: var(--text);
+
+  h2, h3, p {
+    color: var(--text);
+  }
+}
+
+
+.projects-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
