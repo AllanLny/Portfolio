@@ -2,6 +2,7 @@ import Avatar from '../components/Avatar/Avatar';
 import SocialLinks from '../components/SocialLinks/SocialLinks';
 import { useNavigate } from 'react-router-dom';
 import './About.scss';
+import SkillCard from '../components/SkillCard/SkillCard';
 
 export default function About() {
   const navigate = useNavigate();
@@ -12,15 +13,15 @@ export default function About() {
         <div className="about-content">
           <div className="about-profile">
             <div className="about-header">
-            <h2 className="about-title">À propos de moi</h2>
-            <p className="about-intro">
-              Ingénieur DevOps & Développeur Full-Stack, spécialisé dans <strong>l'orchestration cloud avec Google Cloud Platform</strong> et le développement d'applications web modernes. Autonome et curieux, je valorise le travail en équipe, l'entraide et les échanges techniques.
-            </p>
-          </div>
-          <div>
-            <Avatar />
-            <SocialLinks />
-          </div>
+              <h2 className="about-title">À propos de moi</h2>
+              <p className="about-intro">
+                Ingénieur DevOps & Développeur Full-Stack, spécialisé dans <strong>l'orchestration cloud avec Google Cloud Platform</strong> et le développement d'applications web modernes. Autonome et curieux, je valorise le travail en équipe, l'entraide et les échanges techniques.
+              </p>
+            </div>
+            <div>
+              <Avatar />
+              <SocialLinks />
+            </div>
           </div>
           <div className="about-main">
             <section className="about-info">
@@ -32,44 +33,19 @@ export default function About() {
                 Pipelines serverless event-driven, ingestion/transformation de données, solutions SaaS multi-tenant (React, SCSS, FastAPI, PostgreSQL). Philosophie : optimisation et solutions élégantes pour des problèmes concrets.
               </p>
               <h3>Compétences techniques</h3>
-              <div className="skills-grid">
-                <div className="skill-item">
-                <div className=" skill-category">
-                  <h4>Cloud & DevOps</h4>
-                  <ul>
-                    <li>Terraform (IaC)</li>
-                    <li>Google Cloud Platform</li>
-                    <li>CI/CD (GitHub Actions)</li>
-                    <li>Docker</li>
-                    <li>GitOps</li>
-                    <li>SonarQube</li>
-                    <li>FinOps</li>
-                    <li>GreenIt</li>
-                  </ul>
-                </div>
-                </div>
-                <div className="skill-item">
-                <div className=" skill-category">
-                  <h4>Développement</h4>
-                  <ul>
-                    <li>React, SCSS</li>
-                    <li>Python</li>
-                    <li>Java Spring Boot</li>
-                    <li>FastAPI</li>
-                    <li>Tests (Jest, JUnit, Cypress)</li>
-                  </ul>
-                </div>
-                </div>
-                <div className="skill-item">
-                <div className=" skill-category">
-                  <h4>Bases de données</h4>
-                  <ul>
-                    <li>PostgreSQL</li>
-                    <li>MongoDB</li>
-                    <li>BigQuery</li>
-                  </ul>
-                </div>
-                </div>
+              <div className="projects-grid">
+                <SkillCard
+                  title="Cloud & DevOps"
+                  skills={["Terraform (IaC)", "Google Cloud Platform", "CI/CD (GitHub Actions)", "Docker", "GitOps", "SonarQube", "FinOps", "GreenIt"]}
+                />
+                <SkillCard
+                  title="Développement"
+                  skills={["React, SCSS", "Python", "Java Spring Boot", "FastAPI", "Tests (Jest, JUnit, Cypress)"]}
+                />
+                <SkillCard
+                  title="Bases de données"
+                  skills={["PostgreSQL", "MongoDB", "BigQuery"]}
+                />
               </div>
               <h3>Mes valeurs</h3>
               <ul className="values-list">

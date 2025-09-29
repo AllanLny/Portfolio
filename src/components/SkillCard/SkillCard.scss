@@ -1,0 +1,105 @@
+// Styles adaptés pour SkillCard (compétences)
+.skill-card {
+  perspective: 1200px;
+  height: 320px;
+  width: 100%;
+  border-radius: 24px;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  will-change: transform;
+  cursor: pointer;
+  margin-bottom: 0;
+
+  &.active .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 24px;
+    color: #ffffff;
+  }
+
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 24px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.05) 100%);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+    border: 1px solid rgba(255,255,255,0.18);
+    z-index: 1;
+  }
+
+  .card-front {
+    h3 {
+      font-size: 1.5rem;
+      margin: 0;
+      color: #ffffff !important;
+      font-weight: 700;
+      background:  #ffffff;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+
+    .technologies {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        background: rgba(255, 255, 255, 0.3);
+        padding: 0.5rem 1rem;
+        border-radius: 100px;
+        font-size: 0.95rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        color: #ffffff;
+        font-weight: 500;
+        margin-bottom: 0.2rem;
+        display: inline-block;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    height: 220px;
+    .card-front, .card-back {
+      padding: 1rem;
+    }
+    .card-front h3 {
+      font-size: 1.1rem;
+    }
+    .card-back .technologies li {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.7rem;
+    }
+  }
+}
