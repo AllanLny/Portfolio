@@ -29,10 +29,10 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  background: var(--liquid-bg);
-  border-radius: 24px;
-  box-shadow: var(--glass-shadow);
-  border: var(--glass-border);
+  background: transparent;
+  border-radius: 25px;
+  box-shadow: none;
+  border: none;
   position: relative;
   backdrop-filter: var(--liquid-blur) saturate(160%);
   -webkit-backdrop-filter: var(--liquid-blur) saturate(160%);
@@ -43,9 +43,10 @@
   .contact-container {
     width: 100%;
     margin: 0;
-  padding: 2.5rem;
+    padding: 0;
     background: transparent;
-    border-radius: 24px;
+    border-radius: 25px;
+    padding: 2.5rem ;
     box-shadow: none;
     border: none;
     position: relative;
@@ -161,17 +162,20 @@
       a {
         color: var(--text);
         text-decoration: none;
-        transition: color 0.3s ease;
+        transition: color 0.3s, background 0.3s, box-shadow 0.3s;
         padding: 0.8rem 1rem;
         border-radius: 12px;
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.18);
+        background: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.16) 100%);
+        border: 1px solid rgba(255,255,255,0.15);
         font-weight: 500;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 4px rgba(255,255,255,0.06) inset;
+        backdrop-filter: blur(10px) saturate(140%);
+        -webkit-backdrop-filter: blur(10px) saturate(140%);
         &:hover {
           color: var(--accent);
-          background: rgba(255,255,255,0.13);
+          background: linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.22) 100%);
           transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+          box-shadow: 0 5px 15px rgba(106,142,251,0.10);
         }
       }
     }
