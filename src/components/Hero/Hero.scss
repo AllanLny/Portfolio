@@ -4,17 +4,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem;
-  margin-top: 50px;
+  margin-top: 25px;
   position: relative;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-
-  &.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
 
   .hero-content {
     text-align: center;
@@ -103,13 +94,29 @@
     }
     .hero-text {
       h1 {
-        font-size: 2rem;
+        font-size: 2rem !important;
       }
       h2 {
-        font-size: 1.25rem;
+        font-size: 1.25rem !important;
       }
       .hero-description {
-        font-size: 1rem;
+        font-size: 1rem !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .minimal-hero {
+    .hero-text {
+      h1 {
+        font-size: 1.75rem !important;
+      }
+      h2 {
+        font-size: 1rem !important;
+      }
+      .hero-description {
+        font-size: 0.9rem !important;
       }
     }
   }

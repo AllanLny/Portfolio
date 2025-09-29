@@ -1,10 +1,11 @@
- .home-container {
+.home-container {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    padding: 2.5rem;
+    padding: 2.5rem 0;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
 }
 
 
@@ -64,8 +65,8 @@
 
 @media screen and (max-width: 768px) {
 
-  .minimal-hero { 
-
+  .minimal-hero {
+    margin-top: 0 !important;
     margin-bottom: 2rem;
   }
   .hero-social {
@@ -88,11 +89,51 @@
   }
   .home-container {
     margin-top: 0px;
+    padding: 0;
   }
 
 
 .scroll-down-indicator {
     visibility: hidden;
     }
+
+}
+
+@media (max-width: 800px) {
+  .home-section {
+    margin-top: 0 !important;
+    padding: 0.7rem !important;
+    border-radius: 14px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .home-container,
+  .home-content {
+    padding: 0.7rem !important;
+    border-radius: 14px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+  .home-title { font-size: 1.3rem !important; }
+  .home-intro { font-size: 1rem !important; }
+}
+
+@media (max-width: 1000px) {
+  .home-container {
+    margin-top: 80px;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .home-container {
+    margin-top: 0px;
+    margin-bottom: 90px;
+  }
 
 }
