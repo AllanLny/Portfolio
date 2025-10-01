@@ -57,19 +57,19 @@ export default function Contact() {
   };
 
   return (
-    <section className="contact-section">
-      <div className="liquid-glass contact-container">
-        <div className="liquid-glass-specular"></div>
-        <h2 className="about-title">Contact</h2>
-        <p className="about-intro">
-          Vous souhaitez discuter d'un projet ou en savoir plus sur mes services ? N'hésitez pas à me contacter via le formulaire ou les liens ci-dessous.
-        </p>
-        <div className="about-content">
-          <form 
-            className="contact-form"
-            onSubmit={handleSubmit}
-            autoComplete="off"
-          >
+      <section className="contact-section" aria-label="Formulaire et moyens de contact">
+        <div className="liquid-glass contact-container">
+          <div className="liquid-glass-specular"></div>
+          <h1 className="about-title">Contact</h1>
+          <p className="about-intro">
+            Vous souhaitez discuter d'un projet ou en savoir plus sur mes services ? N'hésitez pas à me contacter via le formulaire ou les liens ci-dessous.
+          </p>
+          <div className="about-content">
+            <form 
+              className="contact-form"
+              onSubmit={handleSubmit}
+              autoComplete="off"
+            >
             <div className="form-group">
               <label htmlFor="name">Nom</label>
               <input
@@ -122,7 +122,7 @@ export default function Contact() {
               </span>
             </div>
           </form>
-          <div className="contact-methods">
+          <div className="contact-methods" aria-label="Autres moyens de contact">
             <h3>Autres moyens de contact</h3>
             <div className="contact-links">
               <a href="mailto:allancontactdevpro@gmail.com" className="contact-link">allancontactdevpro@gmail.com</a>
@@ -135,6 +135,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </section>
+      </section>
   );
 }

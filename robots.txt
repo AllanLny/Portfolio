@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 Sitemap: https://allan-lannoy-portfolio.vercel.app/sitemap.xml
+# Contact: allancontactdevpro@gmail.com

@@ -137,3 +137,24 @@
   }
 
 }
+
+// Animations d'entrée
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-container {
+  animation: fadeInUp 0.7s cubic-bezier(.22,.9,.31,1);
+}
+.minimal-hero,
+.projects-showcase,
+.section-recommendations {
+  animation: fadeInUp 1.1s cubic-bezier(.22,.9,.31,1);
+}

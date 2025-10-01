@@ -30,7 +30,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={heroRef} className={`minimal-hero ${isVisible ? 'visible' : ''}`}>
+    <section ref={heroRef} className={`minimal-hero ${isVisible ? 'visible' : ''}`} aria-label="Présentation Allan Lannoy Freelance DevOps & FullStack">
       <div className="hero-content liquid-glass">
         <div className="liquid-glass-specular"></div>
         <div className="hero-avatar">
@@ -50,7 +50,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <section className='section-recommendations'>
+      <section className='section-recommendations' aria-label="Recommandations et témoignages">
         <Recommendations />
       </section>
 

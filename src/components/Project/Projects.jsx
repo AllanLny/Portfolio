@@ -15,7 +15,7 @@ export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   return (
-    <section id="projects" className="projects-section">
+    <section id="projects" className="projects-section" aria-label="Projets récents de Allan Lannoy Freelance DevOps & FullStack">
       <div className="liquid-glass section-container">
         <div className="liquid-glass-specular"></div>
         <h2>Projets récents</h2>

@@ -7,13 +7,13 @@ import SkillCard from '../components/SkillCard/SkillCard';
 export default function About() {
   const navigate = useNavigate();
   return (
-    <main className="about-container">
-      <section className="about-section liquid-glass">
+    <main className="about-container" aria-label="À propos de Allan Lannoy Freelance DevOps & FullStack">
+      <section className="about-section liquid-glass" aria-label="Présentation et compétences">
         <div className="liquid-glass-specular"></div>
         <div className="about-content">
           <div className="about-profile">
             <div className="about-header">
-              <h2 className="about-title">À propos de moi</h2>
+              <h1 className="about-title">À propos de moi</h1>
               <p className="about-intro">
                 Ingénieur DevOps & Développeur Full-Stack, spécialisé dans <strong>l'orchestration cloud avec Google Cloud Platform</strong> et le développement d'applications web modernes. Autonome et curieux, je valorise le travail en équipe, l'entraide et les échanges techniques.
               </p>
@@ -24,7 +24,7 @@ export default function About() {
             </div>
           </div>
           <div className="about-main">
-            <section className="about-info">
+            <section className="about-info" aria-label="Expertise et valeurs">
               <h3>Mon expertise</h3>
               <p>
                 Architectures Cloud sur GCP avec Terraform, multi-environnements (dev/préprod/prod), intégration Pub/Sub, Cloud Storage, Cloud Run Functions (Python), BigQuery, IAM, monitoring.
