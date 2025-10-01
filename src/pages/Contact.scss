@@ -29,12 +29,11 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  background: transparent;
   border-radius: 25px;
   box-shadow: none;
   border: none;
   position: relative;
-  backdrop-filter: var(--liquid-blur) saturate(160%);
+  backdrop-filter: blur(22px) saturate(180%);
   -webkit-backdrop-filter: var(--liquid-blur) saturate(160%);
   overflow: hidden;
   margin-top: 66px;
@@ -44,7 +43,6 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    background: transparent;
     border-radius: 25px;
     padding: 2.5rem ;
     box-shadow: none;
@@ -273,4 +271,25 @@
     margin-bottom: 110px;
   }
 
+}
+
+// Animations d'entrée
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-section,
+.about-title,
+.about-intro,
+.about-content,
+.contact-form,
+.contact-methods {
+  animation: fadeInUp 1.1s cubic-bezier(.22,.9,.31,1);
 }
