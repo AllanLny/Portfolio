@@ -138,23 +138,26 @@
 
 }
 
-// Animations d'entrée
-@keyframes fadeInUp {
+// Animation d'entrée qui préserve l'effet liquid glass
+@keyframes slideInFromBottom {
   from {
-    opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px) scale(0.98);
+    // filter: blur(0.5px);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    // filter: blur(0);
   }
 }
 
-.home-container {
-  animation: fadeInUp 0.7s cubic-bezier(.22,.9,.31,1);
+.minimal-hero {
+  animation: slideInFromBottom 0.8s cubic-bezier(.22,.9,.31,1) 0.1s both;
 }
-.minimal-hero,
-.projects-showcase,
+
+.projects-showcase {
+  animation: slideInFromBottom 0.9s cubic-bezier(.22,.9,.31,1) 0.1s both;
+}
+
 .section-recommendations {
-  animation: fadeInUp 1.1s cubic-bezier(.22,.9,.31,1);
+  animation: slideInFromBottom 1.0s cubic-bezier(.22,.9,.31,1) 0.1s both;
 }

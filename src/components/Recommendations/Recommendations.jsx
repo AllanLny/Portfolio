@@ -172,6 +172,7 @@ export default function Recommendations() {
   return (
     <section 
       className="liquid-glass section-container"
+      ref={containerRef}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
